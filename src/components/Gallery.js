@@ -1,9 +1,10 @@
 import React from 'react'
+import GalleryItem from './GalleryItem';
 
 const Gallery = () => {
   return (
     <div>
-      <h1>Gallery</h1>
+      <GalleryItem />
     </div>
   )
 }
