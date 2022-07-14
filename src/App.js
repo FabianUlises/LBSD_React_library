@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Gallery from './components/Gallery';
 import SearchBar from './components/SearchBar';
+import AlbumView from './components/AlbumView';
+import ArtistView from './components/ArtistView';
 
 
 
@@ -39,9 +42,19 @@ function App() {
   // Returning Jsx
   return (
     <div className="App">
-      <SearchBar handleSearch={handleSearch} />
       {message}
-      <Gallery data={data}/>
+       <Router>
+        <Routes>
+          <Route path='/' element={
+            <Fragment>
+              <SearchBar handleSearch={handleSearch} />
+              <Gallery data={data}/>
+            </Fragment>
+          } />
+          <Route path='/album/:id' element={ <AlbumView /> } />
+          <Route path='/artist/:id' element={ <ArtistView /> } />
+        </Routes>
+       </Router>
     </div>
   );
 }
